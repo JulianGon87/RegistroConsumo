@@ -1,0 +1,38 @@
+# Proyectos de Gradle
+.gradle
+/build
+
+# Configuración de Android Studio e IntelliJ
+*.iml
+.idea/caches
+.idea/libraries
+.idea/modules.xml
+.idea/workspace.xml
+.idea/navEditor.xml
+.idea/assetWizardSettings.xml
+.idea/deploymentTargetSelector.xml
+.idea/deploymentTargetDropDown.xml
+.idea/modules/
+.idea/vcs.xml
+*.ipr
+*.iws
+
+# Archivos locales de propiedades (Contienen rutas de SDK y claves privadas)
+local.properties
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Otros
+/captures
+.externalNativeBuild
+.cxx
+
+# Logs de compilación
+*.log
+
+# Archivos temporales de edición
+*.swp
+*~
+.stackdump

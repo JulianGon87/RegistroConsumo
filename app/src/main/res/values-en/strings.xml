@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Meter Registry</string>
+    <string name="btn_registrar">Register measurement</string>
+    <string name="label_medidor">Meter of:</string>
+    <string name="label_valor">Meter value</string>
+    <string name="label_fecha">Date</string>
+    <string name="op_agua">Water</string>
+    <string name="op_luz">Electricity</string>
+    <string name="op_gas">Gas</string>
+</resources>
