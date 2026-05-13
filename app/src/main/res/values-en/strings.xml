@@ -8,4 +8,13 @@
     <string name="op_agua">Water</string>
     <string name="op_luz">Electricity</string>
     <string name="op_gas">Gas</string>
+    <string name="titulo_registro">Meter Registry</string>
+    <string name="titulo_listado">Consumption Records</string>
+    <string name="leyenda_borrar">To delete a record, press the trash icon</string>
+    <string name="leyenda_agregar">To enter new consumption, press +</string>
+    <string name="confirmar_borrado_titulo">Confirm deletion</string>
+    <string name="confirmar_borrado_mensaje">Are you sure you want to delete this record?</string>
+    <string name="btn_eliminar">Delete</string>
+    <string name="btn_cancelar">Cancel</string>
+    <string name="btn_aceptar">OK</string>
 </resources>

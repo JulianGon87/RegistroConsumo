@@ -7,4 +7,13 @@
     <string name="op_agua">Agua</string>
     <string name="op_luz">Luz</string>
     <string name="op_gas">Gas</string>
+    <string name="titulo_registro">Registro Medidor</string>
+    <string name="titulo_listado">Registros de Consumo</string>
+    <string name="leyenda_borrar">Para borrar un registro, presione el icono de basura</string>
+    <string name="leyenda_agregar">Para ingresar nuevo consumo, oprima +</string>
+    <string name="confirmar_borrado_titulo">Confirmar eliminación</string>
+    <string name="confirmar_borrado_mensaje">¿Estás seguro de que deseas borrar este registro?</string>
+    <string name="btn_eliminar">Eliminar</string>
+    <string name="btn_cancelar">Cancelar</string>
+    <string name="btn_aceptar">Aceptar</string>
 </resources>

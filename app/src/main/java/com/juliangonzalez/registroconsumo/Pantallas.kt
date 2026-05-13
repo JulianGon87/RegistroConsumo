@@ -53,7 +53,7 @@ fun PantallaRegistro(viewModel: MedicionViewModel, onRegistroExitoso: () -> Unit
             .padding(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(text = "Registro Medidor", fontSize = 24.sp, modifier = Modifier.padding(bottom = 16.dp))
+        Text(text = stringResource(R.string.titulo_registro), fontSize = 24.sp, modifier = Modifier.padding(bottom = 16.dp))
 
         OutlinedTextField(
             value = valorText,
@@ -101,12 +101,12 @@ fun PantallaRegistro(viewModel: MedicionViewModel, onRegistroExitoso: () -> Unit
                             fechaText = formateador.format(Date(millis))
                         }
                     }) {
-                        Text("Aceptar")
+                        Text(stringResource(R.string.btn_aceptar))
                     }
                 },
                 dismissButton = {
                     TextButton(onClick = { mostrarCalendario = false }) {
-                        Text("Cancelar")
+                        Text(stringResource(R.string.btn_cancelar))
                     }
                 }
             ) {
@@ -169,18 +169,18 @@ fun PantallaListado(viewModel: MedicionViewModel, onNavegarRegistro: () -> Unit)
                     .padding(16.dp)
             ) {
                 Text(
-                    text = "Registros de Consumo",
+                    text = stringResource(R.string.titulo_listado),
                     fontSize = 24.sp,
                     fontWeight = FontWeight.Bold // Pone el texto en negrita
                 )
                 Spacer(modifier = Modifier.height(4.dp))
                 Text(
-                    text = "Para ingresar nuevo consumo, oprima +",
+                    text = stringResource(R.string.leyenda_agregar),
                     fontSize = 14.sp,
                     color = Color.Gray // Le da un tono más suave al texto explicativo
                 )
                 Text(
-                    text = "Para borrar un registro, presione el icono de basura",
+                    text = stringResource(R.string.leyenda_borrar),
                     fontSize = 14.sp,
                     color = Color.Gray
                 )
@@ -206,27 +206,27 @@ fun PantallaListado(viewModel: MedicionViewModel, onNavegarRegistro: () -> Unit)
 // ==========================================
 @Composable
 fun ItemMedicion(medicion: Medicion, onDelete: () -> Unit) {
-    var mostrarConfirmacion by remember { mutableStateOf(false) }
+    val mostrarConfirmacion = remember { mutableStateOf(false) }
 
-    // Diálogo de confirmación
-    if (mostrarConfirmacion) {
+    // Mensaje de confirmación
+    if (mostrarConfirmacion.value) {
         AlertDialog(
-            onDismissRequest = { mostrarConfirmacion = false },
-            title = { Text("Confirmar eliminación") },
-            text = { Text("¿Estás seguro de que deseas borrar este registro?") },
+            onDismissRequest = { mostrarConfirmacion.value = false },
+            title = { Text(stringResource(R.string.confirmar_borrado_titulo)) },
+            text = { Text(stringResource(R.string.confirmar_borrado_mensaje)) },
             confirmButton = {
                 TextButton(
                     onClick = {
                         onDelete()
-                        mostrarConfirmacion = false
+                        mostrarConfirmacion.value = false
                     }
                 ) {
-                    Text("Eliminar", color = Color.Red)
+                    Text(stringResource(R.string.btn_eliminar), color = Color.Red)
                 }
             },
             dismissButton = {
-                TextButton(onClick = { mostrarConfirmacion = false }) {
-                    Text("Cancelar")
+                TextButton(onClick = { mostrarConfirmacion.value = false }) {
+                    Text(stringResource(R.string.btn_cancelar))
                 }
             }
         )
@@ -234,8 +234,8 @@ fun ItemMedicion(medicion: Medicion, onDelete: () -> Unit) {
 
     // Asigna el icono según el texto en la base de datos
     val icono = when (medicion.tipo) {
-        "Agua" -> R.drawable.ic_agua
-        "Luz" -> R.drawable.ic_luz
+        stringResource(R.string.op_agua) -> R.drawable.ic_agua
+        stringResource(R.string.op_luz) -> R.drawable.ic_luz
         else -> R.drawable.ic_gas
     }
 
@@ -261,8 +261,15 @@ fun ItemMedicion(medicion: Medicion, onDelete: () -> Unit) {
         }
         
         Column(horizontalAlignment = Alignment.End) {
-            Text(text = medicion.valor.toString(), fontSize = 18.sp)
-            IconButton(onClick = { mostrarConfirmacion = true }) {
+            // Formateo inteligente: muestra como entero si no tiene decimales significativos
+            val valorTexto = if (medicion.valor % 1 == 0.0) {
+                medicion.valor.toInt().toString()
+            } else {
+                medicion.valor.toString()
+            }
+            
+            Text(text = valorTexto, fontSize = 18.sp)
+            IconButton(onClick = { mostrarConfirmacion.value = true }) {
                 Icon(
                     imageVector = Icons.Default.Delete,
                     contentDescription = "Borrar",
@@ -271,5 +278,5 @@ fun ItemMedicion(medicion: Medicion, onDelete: () -> Unit) {
             }
         }
     }
-    HorizontalDivider() // Línea separadora entre elementos
+    HorizontalDivider() // Línea que separa elementos
 }
